@@ -1,6 +1,6 @@
 # ejercicio 3
 
-## 1. Thundering Herd Problem o Efecto Estampida
+## 1) Thundering Herd Problem o Efecto Estampida
 
 El Thundering Herd Problem ocurre cuando muchos clientes intentan realizar una petición al mismo tiempo, especialmente después de que un servidor tuvo un fallo.
 
@@ -8,7 +8,7 @@ Si todos los clientes utilizan reintentos con intervalos fijos y sin Jitter, vol
 
 El Jitter ayuda a evitar este problema agregando un tiempo aleatorio a la espera de cada cliente. De esta manera, los reintentos se distribuyen en diferentes momentos y se reduce la posibilidad de que todos los clientes soliciten el servicio simultáneamente.
 
-## 2. Fallo transitorio y fallo permanente
+## 2) Fallo transitorio y fallo permanente
 
 Un fallo transitorio es un error temporal que puede desaparecer después de un determinado período de tiempo. Por ejemplo, un servidor puede estar temporalmente saturado y no responder a una petición. Después de unos segundos, el servidor puede volver a funcionar correctamente, por lo que un reintento puede tener éxito.
 
