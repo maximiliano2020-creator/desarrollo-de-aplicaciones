@@ -1,4 +1,4 @@
-# Ejercicio 3 - Análisis Teórico
+# ejercicio 3
 
 ## 1. Thundering Herd Problem o Efecto Estampida
 
