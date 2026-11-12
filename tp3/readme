@@ -85,32 +85,32 @@ Se incluyen capturas de pantalla que demuestran:
 
 1. Servidor TCP atendiendo tres clientes simultáneamente.
 
-"Servidor TCP" (tp3/capturas/servidor-tcp.png)
+![Servidor TCP] (capturas/servidor-tcp.png)
 
 2. Clientes TCP conectados.
 
 Cliente 1:
 
-"Cliente 1" (tp3/capturas/cliente-1.png)
+![Cliente 1](capturas/cliente-1.png)
 
 Cliente 2:
 
-"Cliente 2" (tp3/capturas/cliente-2.png)
+![Cliente 2](capturas/cliente-2.png)
 
 Cliente 3:
 
-"Cliente 3" (tp3/capturas/cliente-3.png)
+![Cliente 3](capturas/cliente-3.png)
 
 3. Emisor y receptor UDP intercambiando alertas.
 
 Emisor UDP:
 
-"Emisor UDP" (tp3/capturas/emisor-udp.png)
+![Emisor UDP](capturas/emisor-udp.png)
 
 Receptor UDP:
 
-"Receptor UDP" (tp3/capturas/receptor-udp.png)
+![Receptor UDP](capturas/receptor-udp.png)
 
 4. Funcionamiento del timeout UDP después de cinco segundos sin recibir datagramas.
 
-"Timeout UDP" (tp3/capturas/timeout-udp.png)
+![Timeout UDP](capturas/timeout-udp.png)
