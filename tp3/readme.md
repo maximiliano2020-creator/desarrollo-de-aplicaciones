@@ -85,7 +85,7 @@ Se incluyen capturas de pantalla que demuestran:
 
 1. Servidor TCP atendiendo tres clientes simultáneamente.
 
-![Servidor TCP] (capturas/servidor-tcp.png)
+![Servidor TCP](capturas/servidor-tcp.png)
 
 2. Clientes TCP conectados.
 
