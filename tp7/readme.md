@@ -46,8 +46,8 @@ flowchart TD
     D --> F
     E <--> G
     F <--> G
-
-    Formato de datos
+```
+Formato de datos
 
 Ejemplo de los datos enviados por el cliente mediante POST:
 
@@ -57,6 +57,7 @@ Ejemplo de los datos enviados por el cliente mediante POST:
   "precio": 25000,
   "stock": 10
 }
+```
 
 El servidor interpreta el contenido JSON, procesa los datos y devuelve una respuesta con el resultado de la operación.
 
@@ -83,19 +84,19 @@ Captura 1: Invocación exitosa
 
 Demostración de las solicitudes realizadas por el cliente y las respuestas correctas del servidor.
 
-![captura1](evidencia/captura1.jpeg)
+![captura1](./evidencia/captura1.jpeg)
 
 Captura 2: Estructura de datos
 
 Demostración de la carga útil (payload) JSON recibida por el servidor.
 
-![captura2](evidencia/captura2.jpeg)
+![captura2](./evidencia/captura2.jpeg)
 
 Captura 3: Manejo de errores
 
 Demostración del comportamiento del sistema ante una solicitud inválida o un fallo simulado.
 
-![captura3](evidencia/captura3.jpeg)
+![captura3](./evidencia/captura3.jpeg)
 
  5. Instrucciones de ejecución
 
@@ -122,7 +123,7 @@ Ejecución del cliente
 
 Abrir una segunda terminal y, desde la carpeta "TP7/cliente", ejecutar:
 
-node client.js
+node cliente.js
 
 El cliente realizará automáticamente las siguientes operaciones:
 

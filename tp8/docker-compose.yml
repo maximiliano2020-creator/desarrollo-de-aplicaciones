@@ -1,0 +1,92 @@
+services:
+
+  primary:
+    image: postgres:16-alpine
+    container_name: postgres-primary
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespass
+      POSTGRES_DB: inventario
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+    ports:
+      - "5434:5432"
+
+    volumes:
+      - primary_data:/var/lib/postgresql/data
+      - ./database/init:/docker-entrypoint-initdb.d:ro
+      - ./database/primary/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+
+    command:
+      - postgres
+      - -c
+      - wal_level=replica
+      - -c
+      - max_wal_senders=10
+      - -c
+      - max_replication_slots=10
+      - -c
+      - hot_standby=on
+      - -c
+      - hba_file=/etc/postgresql/pg_hba.conf
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d inventario"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  replica:
+    image: postgres:16-alpine
+    container_name: postgres-replica
+    restart: unless-stopped
+
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      PGPASSWORD: replicapass
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - replica_data:/var/lib/postgresql/data
+
+    depends_on:
+      primary:
+        condition: service_healthy
+
+    entrypoint: ["/bin/sh"]
+
+    command:
+      - -c
+      - |
+        set -e
+
+        mkdir -p /var/lib/postgresql/data/pgdata
+
+        if [ ! -s /var/lib/postgresql/data/pgdata/PG_VERSION ]; then
+          echo "Inicializando replica..."
+
+          pg_basebackup \
+            -h primary \
+            -D /var/lib/postgresql/data/pgdata \
+            -U replicator \
+            -Fp \
+            -Xs \
+            -P \
+            -R
+        fi
+
+        exec /usr/local/bin/docker-entrypoint.sh postgres
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  primary_data:
+  replica_data:
