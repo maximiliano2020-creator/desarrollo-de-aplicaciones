@@ -1,0 +1,22 @@
+CREATE ROLE replicator
+WITH REPLICATION LOGIN
+PASSWORD 'replicapass';
+
+CREATE ROLE app_user
+WITH LOGIN
+PASSWORD 'app_pass';
+
+GRANT CONNECT ON DATABASE inventario TO app_user;
+
+CREATE TABLE productos (
+    id BIGSERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    precio NUMERIC(10,2) NOT NULL,
+    stock INTEGER NOT NULL
+);
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON TABLE productos TO app_user;
+
+GRANT USAGE, SELECT
+ON SEQUENCE productos_id_seq TO app_user;
